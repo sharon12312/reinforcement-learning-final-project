@@ -1,0 +1,4 @@
+.DS_Store
+.idea/
+weights/
+__pycache__/

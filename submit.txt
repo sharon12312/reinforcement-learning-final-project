@@ -1,0 +1,7 @@
+Link to notebook: https://colab.research.google.com/drive/1hfgNqvSJm8xhKxZPtrarqeOsrxbrPOYT
+
+Full name student number 1: Sharon Mordechai
+ID student number 1: ##########
+
+Full name student number 2: Amit Huli
+ID student number 2: ##########
