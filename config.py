@@ -1,7 +1,7 @@
 class AgentConfig:
     def __init__(self):
         self.config_dict = {
-            'episodes': 5000,
+            'episodes': 10000,
             'batch_size': 32,
             'IMG_W': 128,
             'IMG_H': 128,
@@ -77,7 +77,7 @@ class A3CConfig:
 
 
 config1 = {
-    'duration': 300,
+    'duration': 500,
     'observation':
         {
             'vehicles_count': 20,
@@ -92,7 +92,7 @@ config1 = {
 }
 
 config2 = {
-    'duration': 300,
+    'duration': 500,
     'initial_vehicle_count': 30,
     'lanes_count': 6,
     'observation': {
@@ -109,7 +109,7 @@ config2 = {
 }
 
 config3 = {
-    'duration': 100,
+    'duration': 500,
     'observation': {
         'observation_shape': (128, 128),
         'scaling': 1.75,

@@ -30,7 +30,7 @@ class HighwayEnv:
         self.debug = debug
         self.train_mode = train_mode
         self.stochastic = stochastic
-        self.episodes = self.model.config['episodes'] if self.train_mode else 1
+        self.episodes = self.model.config['episodes'] if self.train_mode else 10
 
         self.frame_count = 0
         self.epsilon_greedy_frames = 10000.0
@@ -84,6 +84,10 @@ class HighwayEnv:
                 if self.frame_count % self.update_target_network == 0:
                     print(f'Episode: {episode}, accumulated reward: {np.mean(self.episode_reward_history):.4f}, frames count: {self.frame_count}')
                     self.model.update_prediction()
+
+            if not self.train_mode:
+                print(f'==== {type(self.model).__name__} ====')
+                print(f'Reward: {episode_reward}\n')
 
             # store rewards history
             self.episode_reward_history.append(episode_reward)
@@ -157,30 +161,32 @@ def run_experiment(env_name='highway-fast-v0', agents=None, config=None, train=T
     else:
         # evaluation step
         for agent in agents:
-            print(f'==== {type(agent).__name__} ====')
-            game = HighwayEnv(gym_env_name=env_name, model=agent, config_level=config, train_mode=False, load_model=True, debug=True, stochastic=stochastic)
+            print(f'==== {type(agent).__name__} - {env_name} ====')
+            game = HighwayEnv(gym_env_name=env_name, model=agent, config_level=config, train_mode=False, load_model=True, debug=False, stochastic=stochastic)
             game.play()
             game.env.close()
             print(f'==== END {type(agent).__name__} ====\n')
 
 
 # initial variables
-render = True
+render = False
 
-# run experiment 1
-# run_experiment(env_name='highway-fast-v0', agents=AgentFactory.get_easy_agents(), config=config1, train=True, plot=False, load_model=True, stochastic=True)
-run_experiment(env_name='highway-fast-v0', agents=AgentFactory.get_easy_agents(), config=config1, train=False, plot=False, load_model=True)
 
-# run experiment 2
-# run_experiment(env_name='highway-fast-v0', agents=AgentFactory.get_medium_agents(), config=config2, train=True, plot=False, load_model=True, level='medium')
-run_experiment(env_name='highway-fast-v0', agents=AgentFactory.get_medium_agents(), config=config2, train=False, plot=False, load_model=True)
+if __name__ == "__main__":
+    # run experiment 1
+    # run_experiment(env_name='highway-fast-v0', agents=AgentFactory.get_easy_agents(), config=config1, train=True, plot=False, load_model=True, stochastic=True)
+    run_experiment(env_name='highway-fast-v0', agents=AgentFactory.get_easy_agents(), config=config1, train=False, plot=False, load_model=True)
 
-# run experiment 3
-# run_experiment(env_name='highway-fast-v0', agents=AgentFactory.get_super_agents(), config=config3, train=True, plot=False, load_model=True, level='super')
-run_experiment(env_name='highway-fast-v0', agents=AgentFactory.get_super_agents(), config=config3, train=False, plot=False, load_model=True)
+    # run experiment 2
+    # run_experiment(env_name='highway-fast-v0', agents=AgentFactory.get_medium_agents(), config=config2, train=True, plot=False, load_model=True, level='medium')
+    run_experiment(env_name='highway-fast-v0', agents=AgentFactory.get_medium_agents(), config=config2, train=False, plot=False, load_model=True)
 
-# run_experiment(env_name='merge-v0', agents=AgentFactory.get_super_agents(), config=config3, train=True, plot=False, load_model=True, level='super2')
-run_experiment(env_name='merge-v0', agents=AgentFactory.get_super_agents(), config=config3, train=False, plot=False, load_model=True)
+    # run experiment 3
+    # run_experiment(env_name='highway-fast-v0', agents=AgentFactory.get_super_agents(), config=config3, train=True, plot=False, load_model=True, level='super')
+    run_experiment(env_name='highway-fast-v0', agents=AgentFactory.get_super_agents(), config=config3, train=False, plot=False, load_model=True)
 
-# run_experiment(env_name='roundabout-v0', agents=AgentFactory.get_super_agents(), config=config3, train=True, plot=False, load_model=True, level='super3')
-run_experiment(env_name='roundabout-v0', agents=AgentFactory.get_super_agents(), config=config3, train=False, plot=False, load_model=True)
+    # run_experiment(env_name='merge-v0', agents=AgentFactory.get_super_agents(), config=config3, train=True, plot=False, load_model=True, level='super2')
+    run_experiment(env_name='merge-v0', agents=AgentFactory.get_super_agents(), config=config3, train=False, plot=False, load_model=True)
+
+    # run_experiment(env_name='roundabout-v0', agents=AgentFactory.get_super_agents(), config=config3, train=True, plot=False, load_model=True, level='super3')
+    run_experiment(env_name='roundabout-v0', agents=AgentFactory.get_super_agents(), config=config3, train=False, plot=False, load_model=True)
