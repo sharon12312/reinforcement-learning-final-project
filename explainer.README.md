@@ -15,8 +15,10 @@ We train the user car with the help of deep reinforcement learning, the reward f
 
 ## Instructions
 
-### Upload Weights  
-* Download the given _**weights.zip**_ file and extract it into your google drive.
+### Upload Weights
+* Open the _submit.txt_ file and enter the link for the weights folder.  
+  * We used google-drive to share the weights since we cannot upload them into the submission box.
+* Download the given _**weights**_ folder from the shared link and extract it into your google drive.
 * Once the folder is set, please perform the "_**Import Weights**_" section code within the google-colab notebook. This function loads the weights folder into your colab hosted runtime.
 * Grant permissions by clicking on the "_**Connect to Google Drive**_" button to allow the notebook to access the weights folder.
 * The folder should contain:
@@ -36,13 +38,14 @@ We train the user car with the help of deep reinforcement learning, the reward f
 
 ### Run the Agents Evaluations
 To evaluate each agent and construct the environment's video, you would require to perform the instructions below:
-* Run the "Project Algorithms" section (running 25 cells).
+* Run the "**Project Algorithms**" section (running 25 cells).
   * _As mentioned above, the "**Import Weights**" section will require you to grant access to your google drive in order to load the models' weights to your local host runtime._
-* Run the "**Environments Utils**" section to load the environment's handlers.
-* Once it is done, in each exercise (_Highway-Env - Easy, Highway-Env - Medium, and Super Highway Agent_), you should run:
-  * The "**Config Level**" section configures the proper environment level.
-  * The "**Agent Evaluation**" section (in each algorithm, such as DQN, DDQN, and A3C & ICM), to construct the environment's video for each model.
-
+* Run the "**Agents Evaluation**" section to evaluate each agent according to the exercise guidelines.
+  * _Environments Utils_, for loading the relevant configuration and utils objects within the notebook.
+  * _Highway-Env Easy_.
+  * _Highway-Env Medium_.
+  * _Super Highway Agent_.
+* In each section, run the code to construct the environment's video for each model (DQN, DDQN and A3C & ICM).
 
 ---
 ## Authors
