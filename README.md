@@ -1,4 +1,4 @@
-# IDC – Reinforcement Learning - Final Project - 2022 
+# IDC – Reinforcement Learning - Final Project - 2022
 
 ---
 
